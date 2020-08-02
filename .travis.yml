@@ -7,7 +7,7 @@ services:
   - postgresql
 
 env:
-  - DJANGO_VERSION=3.0.8 DB=budget_ci_test
+  - DJANGO_VERSION=3.0.8 DJANGO_SETTINGS_MODULE=app.settings DB=budget_ci_test
 
 before_script:
   - psql -c 'create database budget_ci_test;' -U postgres
