@@ -1,0 +1,21 @@
+language: python
+python:
+  - "3.7"
+  - "3.8"
+
+services:
+  - postgresql
+
+env:
+  - DJANGO_VERSION=3.0.8 DJANGO_SETTINGS_MODULE=app.settings DB=budget_ci_test
+  - SECRET_KEY='3=ap$z6oy)c=%x&7-ss1pubv+3n$%twz4k3um=)bl6x9widc8q'
+
+before_script:
+  - psql -c 'create database budget_ci_test;' -U postgres
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - cd app
+  - pytest
